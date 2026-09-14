@@ -8,6 +8,6 @@ pkgs.mkShell {
     prettierd
     tailwindcss-language-server
     vscode-langservers-extracted
-    typescript-go
+    typescript
   ];
 }
