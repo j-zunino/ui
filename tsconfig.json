@@ -2,6 +2,8 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
+    "registry/**/*.ts",
+    "registry/**/*.tsx",
     "eslint.config.js",
     "prettier.config.js",
     "vite.config.ts"
@@ -14,7 +16,8 @@
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "types": ["vite/client"],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@/registry/*": ["./registry/*"]
     },
 
     /* Bundler mode */
