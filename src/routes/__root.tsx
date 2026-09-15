@@ -1,11 +1,17 @@
+import { Separator } from "@/components/ui/separator";
 import { Outlet, createRootRoute } from "@tanstack/react-router";
 
 export const rootRoute = createRootRoute({
     component: Root,
     notFoundComponent: () => (
-        <main className="container mx-auto p-4 pt-16">
-            <h1>404</h1>
-            <p>The requested page could not be found.</p>
+        <main className="flex h-dvh items-center justify-center">
+            <div className="flex items-center gap-x-2">
+                <h1 className="text-2xl font-bold">404</h1>
+                <Separator orientation="vertical" />
+                <h2 className="text-secondary-foreground">
+                    This page could not be found.
+                </h2>
+            </div>
         </main>
     ),
 });
