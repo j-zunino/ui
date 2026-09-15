@@ -12,16 +12,16 @@ function Home() {
         <div className="mx-auto flex min-h-svh max-w-3xl flex-col gap-8 px-4 py-8">
             <header className="flex flex-col gap-1">
                 <h1 className="text-3xl font-bold tracking-tight">
-                    Custom Registry
+                    Custom Base UI components
                 </h1>
                 <p className="text-muted-foreground">
-                    A custom registry for distributing code using shadcn.
+                    Base UI components based in shadcn/ui.
                 </p>
             </header>
+
             <main className="flex flex-1 flex-col gap-8">
                 <p className="text-sm text-muted-foreground">
-                    No registry items yet. Add items to registry.json to get
-                    started.
+                    No registry items yet.
                 </p>
             </main>
         </div>
