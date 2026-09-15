@@ -1,6 +1,10 @@
 {
     "$schema": "https://ui.shadcn.com/schema/registry.json",
-    "name": "acme",
-    "homepage": "https://ui.jzunino.com.ar",
-    "items": []
+    "name": "jzunino",
+    "homepage": "https://github.com/j-zunino/ui",
+    "include": [
+        "registry/ui/registry.json",
+        "registry/hooks/registry.json",
+        "registry/lib/registry.json"
+    ]
 }
