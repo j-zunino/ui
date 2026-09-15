@@ -1,11 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { IconBrandGithub } from "@tabler/icons-react";
-import { createRoute } from "@tanstack/react-router";
-import { rootRoute } from "./__root";
+import { createFileRoute } from "@tanstack/react-router";
 
-export const indexRoute = createRoute({
-    getParentRoute: () => rootRoute,
-    path: "/",
+export const Route = createFileRoute("/")({
     component: Home,
 });
 
@@ -22,7 +19,7 @@ function Home() {
                     </p>
                 </div>
 
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-1.5">
                     <Button disabled>View components</Button>
                     <Button
                         variant="secondary"

@@ -2,7 +2,7 @@ import Header from "@/components/ui/header";
 import { Separator } from "@/components/ui/separator";
 import { Outlet, createRootRoute } from "@tanstack/react-router";
 
-export const rootRoute = createRootRoute({
+export const Route = createRootRoute({
     component: Root,
     notFoundComponent: () => (
         <main className="flex grow flex-col items-center justify-center">
