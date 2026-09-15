@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { IconBrandGithub } from "@tabler/icons-react";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/")({
     component: Home,
@@ -20,8 +20,14 @@ function Home() {
                 </div>
 
                 <div className="flex items-center gap-1.5">
-                    <Button disabled>View components</Button>
                     <Button
+                        nativeButton={false}
+                        render={<Link to="/components" />}
+                    >
+                        View components
+                    </Button>
+                    <Button
+                        aria-label="See components in Github"
                         variant="secondary"
                         nativeButton={false}
                         render={
@@ -32,7 +38,7 @@ function Home() {
                             />
                         }
                     >
-                        <IconBrandGithub />
+                        <IconBrandGithub aria-hidden />
                         Github
                     </Button>
                 </div>
