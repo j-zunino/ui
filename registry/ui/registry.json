@@ -1,4 +1,18 @@
 {
     "$schema": "https://ui.shadcn.com/schema/registry.json",
-    "items": []
+    "items": [
+        {
+            "name": "responsive-popover",
+            "title": "Responsive Popover",
+            "description": "A popover that opens on hover on desktop and on tap on mobile.",
+            "dependencies": ["@base-ui/react", "cn", "usehooks-ts"],
+            "files": [
+                {
+                    "path": "responsive-popover.tsx",
+                    "type": "registry:ui"
+                }
+            ],
+            "type": "registry:ui"
+        }
+    ]
 }
