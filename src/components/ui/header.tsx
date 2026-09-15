@@ -17,13 +17,18 @@ const LINKS: NavLink[] = [
     {
         id: "home",
         label: "Home",
-        to: ".",
+        to: "/",
+    },
+    {
+        id: "components",
+        label: "Components",
+        to: "/components",
     },
 ];
 
 export default function Header() {
     return (
-        <header className="sticky top-0 w-full px-6 py-4">
+        <header className="sticky top-0 w-full p-4">
             <NavigationMenu>
                 <NavigationMenuList>
                     {LINKS.map((link: NavLink) => (
