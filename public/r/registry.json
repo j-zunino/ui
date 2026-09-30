@@ -19,6 +19,24 @@
         }
       ],
       "type": "registry:ui"
+    },
+    {
+      "name": "select-tabs",
+      "title": "Select Tabs",
+      "description": "A select with a vertical tablist.",
+      "dependencies": [
+        "cn"
+      ],
+      "registryDependencies": [
+        "select"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/select-tabs.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
     }
   ]
 }

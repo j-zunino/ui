@@ -5,10 +5,32 @@
             "name": "responsive-popover",
             "title": "Responsive Popover",
             "description": "A popover that opens on hover on desktop and on tap on mobile.",
-            "dependencies": ["@base-ui/react", "cn", "usehooks-ts"],
+            "dependencies": [
+                "@base-ui/react",
+                "cn",
+                "usehooks-ts"
+            ],
             "files": [
                 {
                     "path": "responsive-popover.tsx",
+                    "type": "registry:ui"
+                }
+            ],
+            "type": "registry:ui"
+        },
+        {
+            "name": "select-tabs",
+            "title": "Select Tabs",
+            "description": "A select with a vertical tablist.",
+            "dependencies": [
+                "cn"
+            ],
+            "registryDependencies": [
+                "select"
+            ],
+            "files": [
+                {
+                    "path": "select-tabs.tsx",
                     "type": "registry:ui"
                 }
             ],
