@@ -1,7 +1,3 @@
-import {
-    SelectScrollDownButton,
-    SelectScrollUpButton,
-} from "@/components/ui/select";
 import { Select as SelectPrimitive } from "@base-ui/react/select";
 import { Tabs as TabsPrimitive } from "@base-ui/react/tabs";
 import { cva, type VariantProps } from "class-variance-authority";
@@ -110,14 +106,12 @@ function SelectTabsContent({ className, ...props }: TabsPrimitive.Panel.Props) {
             className={cn("relative flex min-h-0 min-w-0 flex-1", className)}
             {...props}
         >
-            <SelectScrollUpButton />
             <SelectPrimitive.List
                 data-slot="select-list"
                 className="flex max-h-(--available-height) min-h-0 flex-1 flex-col overflow-x-hidden overflow-y-auto p-1"
             >
                 {props.children}
             </SelectPrimitive.List>
-            <SelectScrollDownButton />
         </TabsPrimitive.Panel>
     );
 }
