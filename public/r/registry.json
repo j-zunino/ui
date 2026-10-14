@@ -21,18 +21,21 @@
       "type": "registry:ui"
     },
     {
-      "name": "select-tabs",
-      "title": "Select Tabs",
-      "description": "A select with a vertical tablist.",
+      "name": "combobox-tabs",
+      "title": "Combobox Tabs",
+      "description": "A select with a scoped category rail.",
       "dependencies": [
+        "@base-ui/react",
+        "@tabler/icons-react",
+        "class-variance-authority",
         "cn"
       ],
       "registryDependencies": [
-        "select"
+        "combobox"
       ],
       "files": [
         {
-          "path": "registry/ui/select-tabs.tsx",
+          "path": "registry/ui/combobox-tabs.tsx",
           "type": "registry:ui"
         }
       ],
