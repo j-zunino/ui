@@ -26,6 +26,7 @@ function RouteComponent() {
                     components.map((component) => (
                         <Link
                             to={component.name}
+                            key={component.name}
                             className="w-full justify-start text-lg font-medium text-foreground hover:underline"
                         >
                             {component.title}
