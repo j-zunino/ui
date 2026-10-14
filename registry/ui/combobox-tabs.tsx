@@ -2,6 +2,7 @@ import { ComboboxInput } from "@/components/ui/combobox";
 import { Combobox as ComboboxPrimitive } from "@base-ui/react/combobox";
 import { Tabs as TabsPrimitive } from "@base-ui/react/tabs";
 import { IconChevronDown } from "@tabler/icons-react";
+import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "cn";
 import * as React from "react";
 
@@ -155,20 +156,42 @@ function ComboboxTabsList({ className, ...props }: TabsPrimitive.List.Props) {
     );
 }
 
-function ComboboxTabsTab({ className, ...props }: TabsPrimitive.Tab.Props) {
+const comboboxTabsTabVariants = cva(
+    "inline-flex items-center rounded-2xl text-sm font-medium whitespace-nowrap text-foreground/60 transition-all outline-none hover:text-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-disabled:pointer-events-none aria-disabled:opacity-50 dark:text-muted-foreground dark:hover:text-foreground data-active:bg-background data-active:text-foreground dark:data-active:bg-input/30 dark:data-active:text-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+    {
+        variants: {
+            size: {
+                default: "h-8 w-full justify-start gap-1.5 px-2",
+                icon: "size-8 justify-center",
+                "icon-xs":
+                    "size-6 justify-center [&_svg:not([class*='size-'])]:size-3",
+                "icon-sm": "size-7 justify-center",
+                "icon-lg": "size-9 justify-center",
+            },
+        },
+        defaultVariants: {
+            size: "default",
+        },
+    },
+);
+
+function ComboboxTabsTab({
+    className,
+    size = "default",
+    ...props
+}: TabsPrimitive.Tab.Props & VariantProps<typeof comboboxTabsTabVariants>) {
     return (
         <TabsPrimitive.Tab
             data-slot="combobox-tabs-tab"
-            className={cn(
-                "inline-flex h-8 w-full items-center justify-start gap-1.5 rounded-2xl px-2 text-sm font-medium whitespace-nowrap text-foreground/60 transition-all outline-none hover:text-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-disabled:pointer-events-none aria-disabled:opacity-50 dark:text-muted-foreground dark:hover:text-foreground data-active:bg-background data-active:text-foreground dark:data-active:bg-input/30 dark:data-active:text-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-                className,
-            )}
+            data-size={size}
+            className={cn(comboboxTabsTabVariants({ size }), className)}
             {...props}
         />
     );
 }
 
 export {
+    comboboxTabsTabVariants,
     ComboboxTabs,
     ComboboxTabsContent,
     ComboboxTabsInput,
