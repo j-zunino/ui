@@ -21,6 +21,22 @@ type ComboboxTabsProps<Item> = Omit<
     onGroupValueChange?: (value: string) => void;
 };
 
+function findGroupValue<Item>(
+    groups: ComboboxTabsGroup<Item>[],
+    item: Item | null | undefined,
+    isEqual?: (a: Item, b: Item) => boolean,
+) {
+    if (item == null) {
+        return undefined;
+    }
+
+    return groups.find((group) =>
+        group.items.some((candidate) =>
+            isEqual ? isEqual(candidate, item) : candidate === item,
+        ),
+    )?.value;
+}
+
 function ComboboxTabs<Item>({
     groups,
     groupValue,
@@ -30,7 +46,13 @@ function ComboboxTabs<Item>({
     ...props
 }: ComboboxTabsProps<Item>) {
     const [uncontrolled, setUncontrolled] = React.useState(
-        defaultGroupValue ?? groups[0]?.value,
+        defaultGroupValue ??
+            findGroupValue(
+                groups,
+                props.value ?? props.defaultValue,
+                props.isItemEqualToValue,
+            ) ??
+            groups[0]?.value,
     );
     const value = groupValue ?? uncontrolled;
     const setValue = onGroupValueChange ?? setUncontrolled;
@@ -97,7 +119,7 @@ function ComboboxTabsContent({
                 <ComboboxPrimitive.Popup
                     data-slot="combobox-content"
                     className={cn(
-                        "group/combobox-content relative isolate z-50 grid max-h-(--available-height) w-(--anchor-width) min-w-64 origin-(--transform-origin) grid-cols-[auto_1fr] grid-rows-[auto_minmax(0,1fr)_auto] overflow-hidden rounded-2xl bg-popover text-popover-foreground shadow-lg ring-1 ring-foreground/5 duration-100 data-[side=bottom]:slide-in-from-top-2 data-[side=inline-end]:slide-in-from-left-2 data-[side=inline-start]:slide-in-from-right-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 dark:ring-foreground/10 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
+                        "group/combobox-content relative isolate z-50 grid max-h-(--available-height) w-(--anchor-width) min-w-64 origin-(--transform-origin) grid-cols-[auto_1fr] overflow-hidden rounded-2xl bg-popover text-popover-foreground shadow-lg ring-1 ring-foreground/5 duration-100 data-[side=bottom]:slide-in-from-top-2 data-[side=inline-end]:slide-in-from-left-2 data-[side=inline-start]:slide-in-from-right-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 dark:ring-foreground/10 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
                         className,
                     )}
                     {...props}
@@ -133,13 +155,10 @@ function ComboboxTabsList({ className, ...props }: TabsPrimitive.List.Props) {
     );
 }
 
-function ComboboxTabsListTrigger({
-    className,
-    ...props
-}: TabsPrimitive.Tab.Props) {
+function ComboboxTabsTab({ className, ...props }: TabsPrimitive.Tab.Props) {
     return (
         <TabsPrimitive.Tab
-            data-slot="combobox-tabs-list-trigger"
+            data-slot="combobox-tabs-tab"
             className={cn(
                 "inline-flex h-8 w-full items-center justify-start gap-1.5 rounded-2xl px-2 text-sm font-medium whitespace-nowrap text-foreground/60 transition-all outline-none hover:text-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-disabled:pointer-events-none aria-disabled:opacity-50 dark:text-muted-foreground dark:hover:text-foreground data-active:bg-background data-active:text-foreground dark:data-active:bg-input/30 dark:data-active:text-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
                 className,
@@ -154,7 +173,7 @@ export {
     ComboboxTabsContent,
     ComboboxTabsInput,
     ComboboxTabsList,
-    ComboboxTabsListTrigger,
+    ComboboxTabsTab,
     ComboboxTabsTrigger,
 };
 export type { ComboboxTabsGroup, ComboboxTabsProps };
